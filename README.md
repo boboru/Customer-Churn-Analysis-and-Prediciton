@@ -1,4 +1,4 @@
-# Customer Churn Analysis and Prediciton
+# Customer Churn Analysis and Prediction
 
 Customer churn is the rate at which customers stop using a company's products or services. By using advanced analytics and machine learning, businesses can predict which customers are likely to leave, enabling proactive retention strategies. This approach enhances customer loyalty and lifetime value, increasing revenue and providing a competitive advantage.
 
