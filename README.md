@@ -91,3 +91,4 @@ To measure user engagement, we can consider different dimensions: depth and brea
 - The model's performance on the test dataset, with an 86% recall, is similar to that on the CV dataset.
 - Telco should focus on customers with a high probability of leaving. They can provide promotions or coupons, or directly keep track of their activities.
 - Identifying potential churn customers may increase the retention rate, consequently enhancing the corresponding customer lifetime value.
+- If we can implement **differentiated pricing strategies** based on contract type, it may encourage customers to subscribe to long-term plans, thereby increasing customer lifetime value.
