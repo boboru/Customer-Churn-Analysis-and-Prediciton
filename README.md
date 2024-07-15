@@ -80,7 +80,7 @@ To measure user engagement, we can consider different dimensions: depth and brea
 - Since recall and precision have a trade-off relationship, the precision is somewhat low. This indicates that the model is more conservative.
 - Therefore, we choose **Naive Bayes** model to conduct predictions. 86% recall is relatively high compared to other models.
 
-## Prediciton and Recommendation
+## Prediction and Recommendation
 
 |                                  |      Accuracy  |       Recall   |
 |:---------------------------------|---------------:|---------------:|
