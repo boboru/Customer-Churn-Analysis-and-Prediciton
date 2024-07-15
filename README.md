@@ -15,12 +15,13 @@ The dataset is provided by IBM on [Kaggle](https://www.kaggle.com/datasets/blast
 
 ![](imgs/Histogram_of_Tenure.png)
 - Different contract types do show different distributions of tenure.
-- The tenure of monthly contract is short; otherwise, it's relatively high in two-year contract.
+- Tenure is short for monthly contracts, but relatively high for two-year contracts. ![image](https://github.com/user-attachments/assets/aa2c4b65-f23c-4f1e-8fc2-60fc1e849408)
+
 
 &nbsp;
 
 ![](imgs/Histogram_of_MonthlyCharges.png)
-- Monthly charges seem to be non-correlated to contract type especially for the monthly charge < 30. They share similiar fees among contract types.
+- Monthly charges appear to be uncorrelated with contract type, especially for charges under $30, as they share similar fees across contract types. 
 - There are other factors affecting the monthly fees. We conduct additional regression analysis to investigate the relationship.
 
 ### Monthly Charges Analysis
@@ -29,7 +30,7 @@ The dataset is provided by IBM on [Kaggle](https://www.kaggle.com/datasets/blast
 ![](imgs/ols.png)
 - The model expalins 99.9% variance on the means of monthly charges. ($R^2=0.999$)
 - The model shows how Telco charges for each service. Therefore, we can list the charging fees corresponding to each combination of services.
-- The MAPE of the estimatons is 1.22%.
+- The MAPE of the estimations is 1.22%.
 ![](imgs/price_df.png)
 
 ### Churn Analysis
@@ -40,8 +41,8 @@ The dataset is provided by IBM on [Kaggle](https://www.kaggle.com/datasets/blast
 &nbsp;
 
 ![](imgs/internet_service_churn.png)
-- For internet service, people choosing Fiber optic have the highest churnning rate.
-- There are 4 additional service including online security, online backup, device protection and tech support sharing similar patterns. People adopting these service are less likey to churn (Yes vs. No), indicating their engagements.
+- For internet service, people choosing Fiber optic have the highest churn rate.
+- There are 4 additional service including online security, online backup, device protection and tech support sharing similar patterns. People adopting these service are less likely to churn (Yes vs. No), indicating their engagements.
 - In addition, streaming TV and streaming movies are also related to internet service. But it seems these services may not satisfy customers a lot.
 
 &nbsp;
