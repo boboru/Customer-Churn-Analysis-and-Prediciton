@@ -78,17 +78,58 @@ To measure user engagement, we can consider different dimensions: depth and brea
 
 - For customer churn, **recall** may be an important metric, since we want to increase the retention rate and take care of people who are likely to churn.
 - Since recall and precision have a trade-off relationship, the precision is somewhat low. This indicates that the model is more conservative.
-- Therefore, we choose **Naive Bayes** model to conduct predictions. 86% recall is relatively high compared to other models.
+- Whether we use the entire dataset or select stratified data (table showed in .ipynb) for CV, Naive Bayes consistently shows higher recall.
+- Therefore, we choose **Naive Bayes** model to conduct predictions. 85% recall is relatively high compared to other models.
+
+## Use Naive Bayes to Investigate Features
+### Gaussian NB
+
+| Feature (Partial)    | Fit Time | Score Time | Accuracy | Recall |
+|----------------------|----------|------------|----------|--------|
+| Contract_Two year    | 0.0      | 0.0        | 0.49     | 0.97   |
+| subscription_left    | 0.0      | 0.0        | 0.64     | 0.53   |
+| cp                   | 0.0      | 0.0        | 0.76     | 0.28   |
+| SeniorCitizen_1      | 0.0      | 0.0        | 0.71     | 0.26   |
+| tenure               | 0.0      | 0.0        | 0.74     | 0.00   |
+| MonthlyCharges       | 0.0      | 0.0        | 0.74     | 0.00   |
+
+
+- Since NB is based on the conditional independence assumption of features, we build GaussianNB for each feature. The important features will contribute to the evaluation metric (Recall here).
+- `Contract_Two year`, `subscription_left`, `cp`, `SeniorCitizen_1` are four important features.
+
+## Feature Selection based on CV
+- After model selection, we find that Naive Bayes is better.
+- After investigating feature importance, there are four important features.
+- Thus, we can consider how those features contribute to the model.
+  
+| Feature                 | Fit Time | Score Time | Accuracy | Recall |
+|-------------------------|----------|------------|----------|--------|
+| Contract_Two year       | 0.001    | 0.001      | 0.491    | 0.973  |
+| + subscription_left     | 0.001    | 0.001      | 0.569    | 0.925  |
+| + cp                    | 0.001    | 0.001      | 0.598    | 0.919  |
+| + SeniorCitizen_1       | 0.001    | 0.001      | 0.670    | 0.853  |
+| All features            | 0.003    | 0.002      | 0.680    | 0.853  |
+
+- As more features add, it seems like a trade-off relationship between accuracy and recall.
 
 ## Prediciton and Recommendation
 
-|                                  |      Accuracy  |       Recall   |
-|:---------------------------------|---------------:|---------------:|
+- Use the whole dataset to retrain the model.
+
+
+| Feature               | Accuracy | Recall |
+|-----------------------|----------|--------|
+| Contract_Two year     | 0.503    | 0.984  |
+| + subscription_left     | 0.589    | 0.922  |
+| + cp                    | 0.611    | 0.896  |
+| + SeniorCitizen_1       | 0.669    | 0.839  |
+| All Features          | 0.680    | 0.860  |
 | Baseline model  (Random Forest)   |    0.79        |         0.48   |
-| **Naive Bayes**                  |    **0.68**    |     **0.86**   |  
 
 
-- The model's performance on the test dataset, with an 86% recall, is similar to that on the CV dataset.
+
+- The model's performance on the test dataset, with an 98.4% recall, is similar to that on the CV dataset.
+- With adopting features `Contract_Two year` and `subscription_left`, accuracy increases 8.7% and recall declines by 6.2%.
 - Telco should focus on customers with a high probability of leaving. They can provide promotions or coupons, or directly keep track of their activities.
 - Identifying potential churn customers may increase the retention rate, consequently enhancing the corresponding customer lifetime value.
 - If we can implement **differentiated pricing strategies** based on contract type, it may encourage customers to subscribe to long-term plans, thereby increasing customer lifetime value.
